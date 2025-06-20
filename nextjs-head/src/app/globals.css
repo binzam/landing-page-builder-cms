@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+:root {
+  --color-accent-1: #facc15;
+  --color-accent-2: #6366f1;
+  --color-neutral-light: #f9fafb;
+  --color-neutral-dark: #111827;
+}
+
+@theme inline {
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-accent-1: var(--color-accent-1);
+  --color-accent-2: var(--color-accent-2);
+  --color-neutral-light: var(--color-neutral-light);
+  --color-neutral-dark: var(--color-neutral-dark);
+  --custom-radius: var(--custom-radius);
+  --custom-spacing: var(--custom-spacing);
+}
+
+body {
+  min-height: 100vh;
+}
+
+.custom-radius {
+  border-radius: var(--custom-radius);
+}
+.custom-spacing {
+  gap: var(--custom-spacing);
+}
