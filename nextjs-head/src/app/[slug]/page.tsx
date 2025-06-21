@@ -31,13 +31,13 @@ export default async function LandingPage({
     <div
       style={style}
       className={cn(
-        'min-h-screen flex flex-col custom-spacing relative bg-neutral-light',
+        'min-h-screen flex flex-col relative bg-neutral-light',
         className
       )}
     >
       <Link
         href="/"
-        className="absolute top-5 left-5 text-sm font-semibold text-neutral-light bg-secondary custom-radius gap-2 flex items-center px-4 py-2 hover:bg-secondary/80 z-1000"
+        className="absolute top-5 left-5 text-sm font-semibold text-neutral-light bg-secondary rounded-custom-radius gap-2 flex items-center px-4 py-2 hover:bg-secondary/80 z-1000"
       >
         <svg
           width="18"

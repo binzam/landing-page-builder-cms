@@ -21,7 +21,7 @@ export function DisableDraftMode() {
     });
   if (!shouldRender) return null;
   return (
-    <div className="fixed bottom-4 left-4 bg-gray-50 text-black px-4 py-2 rounded">
+    <div className="fixed bottom-4 left-4 bg-red-600 text-white font-extrabold px-4 py-2 rounded">
       {pending ? (
         'Disabling draft mode...'
       ) : (

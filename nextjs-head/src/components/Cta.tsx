@@ -5,10 +5,10 @@ import { Cta } from '@/sanity/types';
 export default function CTASection({ section }: { section: Cta }) {
   const { heading, subheading, button } = section;
   return (
-    <section className="py-20 ">
+    <section className="py-20 bg-primary ">
       <div className="container px-4 text-center mx-auto">
-        <h2 className="text-4xl font-extrabold mb-2 text-primary">{heading}</h2>
-        <p className="text-base font-semibold mb-8 max-w-2xl mx-auto text-accent-2">
+        <h2 className="text-4xl font-extrabold mb-2 text-neutral-light">{heading}</h2>
+        <p className="text-base font-semibold mb-8 max-w-2xl mx-auto text-accent-1">
           {subheading}
         </p>
         {button && (
@@ -16,7 +16,7 @@ export default function CTASection({ section }: { section: Cta }) {
             asChild
             variant="secondary"
             size="xl"
-            className="custom-radius shadow shadow-accent-1 tracking-wide  bg-secondary text-neutral-light hover:bg-secondary/90"
+            className="bg-neutral-light text-primary rounded-custom-radius shadow shadow-accent-2/30 tracking-wide  "
           >
             <a href={button.link}>{button.text}</a>
           </Button>

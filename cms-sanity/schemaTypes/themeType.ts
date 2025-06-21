@@ -13,8 +13,6 @@ export const themeType = defineType({
         list: [
           {title: 'Light', value: 'light'},
           {title: 'Dark', value: 'dark'},
-          {title: 'Brand', value: 'brand'},
-          {title: 'Custom', value: 'custom'},
         ],
         layout: 'radio',
       },
@@ -22,30 +20,22 @@ export const themeType = defineType({
     }),
     defineField({
       name: 'primaryColor',
+      description:
+        'Choose a primary color. A matching secondary color will be applied automatically.',
       title: 'Primary Color',
       type: 'simplerColor',
       options: {
         colorList: [
           {label: 'Indigo', value: '#6366f1'},
-          {label: 'Sky Blue', value: '#0ea5e9'},
+          {label: 'Blue', value: '#3b82f6'},
+          {label: 'Sky', value: '#0ea5e9'},
+          {label: 'Cyan', value: '#06b6d4'},
           {label: 'Emerald', value: '#10b981'},
           {label: 'Amber', value: '#f59e0b'},
           {label: 'Rose', value: '#f43f5e'},
+          {label: 'Violet', value: '#8b5cf6'},
           {label: 'Slate', value: '#64748b'},
-        ],
-      },
-    }),
-    defineField({
-      name: 'secondaryColor',
-      title: 'Secondary Color',
-      type: 'simplerColor',
-      options: {
-        colorList: [
-          {label: 'Slate', value: '#94a3b8'},
-          {label: 'Gray', value: '#9ca3af'},
           {label: 'Zinc', value: '#71717a'},
-          {label: 'Neutral', value: '#737373'},
-          {label: 'Stone', value: '#78716c'},
         ],
       },
     }),

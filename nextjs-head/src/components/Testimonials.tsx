@@ -10,8 +10,8 @@ export default function TestimonialsSection({
 }) {
   const { heading, subheading, layout, testimonials = [] } = section;
   return (
-    <section className="py-20 ">
-      <div className="container px-4 mx-auto">
+    <section className="py-20 bg-section-bg">
+      <div className="container px-2 sm:px-4 mx-auto">
         <h2 className="text-4xl text-shadow-xs text-shadow-neutral-dark font-extrabold text-center mb-4 text-primary">
           {heading}
         </h2>
@@ -20,9 +20,10 @@ export default function TestimonialsSection({
         </p>
 
         <div
-          className={cn(//css grid, why custom tailwind css not working on draft mode
+          className={cn(
             'custom-spacing',
-            layout === 'grid' && 'grid md:grid-cols-2 custom-spacing',
+            layout === 'grid' &&
+              'grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))]',
             layout === 'stacked' && 'flex flex-col',
             layout === 'carousel' &&
               'flex overflow-x-auto space-x-4 snap-x p-4 snap-mandatory scroll-smooth scrollbar-hide'
@@ -32,7 +33,7 @@ export default function TestimonialsSection({
             <div
               key={index}
               className={cn(
-                'bg-neutral-light p-6 rounded-lg shadow-sm shadow-accent-2/60 flex-shrink-0 snap-start',
+                'bg-tcard-bg p-3 sm:p-6 rounded-lg shadow-sm shadow-accent-2/60 flex-shrink-0 snap-start',
                 layout === 'carousel' && 'w-100',
                 layout === 'stacked' && 'w-full max-w-3xl mx-auto text-center'
               )}
@@ -48,14 +49,14 @@ export default function TestimonialsSection({
                       alt={testimonial.author.name}
                       width={48}
                       height={48}
-                      className="w-12 h-12 rounded-full mr-4 border-2 border-accent-2"
+                      className="w-12 h-12 rounded-full mr-2 border-2 border-primary"
                     />
                   )}
                 <div>
-                  <h4 className="font-bold text-left text-primary">
+                  <h4 className="font-bold text-left text-sm sm:text-base text-primary">
                     {testimonial.author?.name}
                   </h4>
-                  <p className="text-sm text-accent-2">
+                  <p className="text-base/4 sm:text-lg/5 font-semibold text-accent-2">
                     {testimonial.author?.role}
                     {testimonial.author?.company && (
                       <strong> @{testimonial.author.company}</strong>
@@ -64,22 +65,24 @@ export default function TestimonialsSection({
                 </div>
               </div>
               <blockquote>
-                <p className="text-secondary text-sm font-bold mb-2  before:content-['“'] after:content-['”']">
-                  {testimonial.quote}
+                <p className="text-primary  font-semibold text-lg/6 sm:text-xl/6 before:content-['“'] after:content-['”']">
+                  <i className="text-secondary mx-1">{testimonial.quote}</i>
                 </p>
               </blockquote>
               {typeof testimonial.rating === 'number' && (
                 <div
-                  className={`flex items-center ${layout === 'stacked' ? 'justify-center' : ''}`}
+                  className={`flex items-center mt-2 ${layout === 'stacked' ? 'justify-center' : ''}`}
                 >
                   {[...Array(5)].map((_, i) => (
                     <span
                       key={i}
-                      className={
-                        i < testimonial.rating!
-                          ? 'text-primary'
-                          : 'text-gray-300'
-                      }
+                      className={`text-xl sm:text-2xl 
+                        ${
+                          i < testimonial.rating!
+                            ? 'text-accent-2'
+                            : 'text-gray-300'
+                        }
+                      `}
                     >
                       ★
                     </span>

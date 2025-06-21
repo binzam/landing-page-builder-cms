@@ -33,3 +33,4 @@ data
 files
 .env
 sanity.config.ts
+sanity.cli.ts

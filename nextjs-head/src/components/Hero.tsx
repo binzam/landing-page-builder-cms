@@ -5,7 +5,7 @@ import { Hero } from '@/sanity/types';
 export default function HeroSection({ section }: { section: Hero }) {
   const { backgroundImage, heading, subtitle, primaryButton } = section;
   return (
-    <section className=" h-screen  max-h-[660px]  p-2">
+    <section className=" h-screen  max-h-[660px]  p-2 bg-neutral-light">
       <div className=" relative w-full h-full flex items-center justify-center mx-auto overflow-hidden rounded-2xl">
         {backgroundImage && (
           <>
@@ -20,15 +20,15 @@ export default function HeroSection({ section }: { section: Hero }) {
               priority
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-dark/60  via-neutral-dark/70 to-neutral-dark/80 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-dark/40  via-[#333333]/50 to-[#222]/70 z-10" />
           </>
         )}
-        <div className="relative w-full h-full z-100 text-center p-4 flex justify-center ">
-          <h1 className="max-w-xl  text-4xl sm:text-5xl md:text-8xl text-shadow-sm text-shadow-neutral-dark tracking-wide font-extrabold my-auto  text-left text-accent-1 capitalize">
+        <div className="relative w-full h-full z-100 text-center p-4 flex flex-col items-center justify-center ">
+          <h1 className=" max-w-4xl text-4xl sm:text-6xl text-shadow-sm text-shadow-neutral-dark tracking-wide font-extrabold  text-center text-primary capitalize">
             {heading}
           </h1>
-          <div className="max-w-2xl  flex flex-col items-center justify-center">
-            <p className="text-sm/4 sm:text-lg md:text-4xl/12 mb-12 max-w-3xl text-center mx-auto text-neutral-light">
+          <div className="max-w-2xl  flex flex-col items-center justify-center mt-8">
+            <p className="text-sm/4 sm:text-lg md:text-2xl/8 max-w-3xl font-bold text-center mb-6 text-neutral-light">
               {subtitle}
             </p>
             {primaryButton && (
@@ -36,14 +36,13 @@ export default function HeroSection({ section }: { section: Hero }) {
                 asChild
                 size="xl"
                 variant="default"
-                className="custom-radius w-fit  shadow shadow-neutral-dark tracking-wide  font-bold bg-accent-1 text-neutral-light hover:bg-primary/90"
+                className="rounded-custom-radius w-fit  shadow shadow-neutral-dark tracking-wide  font-bold bg-primary text-neutral-light hover:bg-primary/90"
               >
                 <a href={primaryButton.link}>{primaryButton.text}</a>
               </Button>
             )}
           </div>
         </div>
-        {/* //variant */}
       </div>
     </section>
   );
