@@ -17,7 +17,6 @@ export const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-
 export const fontClassMap = {
   spaceGrotesk: spaceGrotesk.className,
   roboto: roboto.className,

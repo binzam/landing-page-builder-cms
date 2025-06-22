@@ -31,7 +31,7 @@ export default async function LandingPage({
     <div
       style={style}
       className={cn(
-        'min-h-screen flex flex-col relative bg-neutral-light',
+        'min-h-screen flex flex-col gap-10 relative bg-neutral-light',
         className
       )}
     >

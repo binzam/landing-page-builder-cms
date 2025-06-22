@@ -3,7 +3,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { fontClassMap } from './fonts';
 import { Theme } from '@/sanity/types';
-import { colorSystem1 } from './theme';
+import { colorSystem3d } from './theme';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,9 +19,9 @@ export function resolveTheme(theme: Theme): {
   const fontClass = fontClassMap[font] || fontClassMap['poppins'];
   const primary = theme.primaryColor?.value || '#6366f1';
   const colors = (
-    colorSystem1 as Record<
+    colorSystem3d as Record<
       string,
-      (typeof colorSystem1)[keyof typeof colorSystem1]
+      (typeof colorSystem3d)[keyof typeof colorSystem3d]
     >
   )[primary];
 
@@ -41,19 +41,16 @@ export function resolveTheme(theme: Theme): {
 
   const style = {
     '--primary-color': primary,
-    '--secondary-color': colors?.secondary,
-    '--accent-color-1': colors?.accent1,
-    '--accent-color-2': colors?.accent2,
-    '--neutral-color-light': isDark
-      ? colors?.darkNeutral
-      : colors?.lightNeutral,
-    '--neutral-color-dark': isDark ? colors?.lightNeutral : colors?.darkNeutral,
-    '--section-bg': isDark ? colors?.sectionBgDark : colors?.sectionBg,
-    '--feature-bg': isDark ? colors?.featureBgDark : colors?.featureBg,
-    '--testimonial-card-bg': isDark
-      ? colors?.testimonialCardBgDark
-      : colors?.testimonialCardBg,
-    '--body-bg': isDark ? colors?.bodyBgDark : colors?.bodyBg,
+    '--primary-color-light': colors.primaryLight,
+    '--primary-color-dark': colors.primaryDark,
+    '--secondary-color': colors.secondary,
+    '--secondary-color-light': colors.secondaryLight,
+    '--secondary-color-dark': colors.secondaryDark,
+    '--accent-color-1': colors.accent1,
+    '--accent-color-2': colors.accent2,
+    '--neutral-color-light': colors.lightNeutral,
+    '--neutral-color-dark': colors.darkNeutral,
+    '--body-bg': isDark ? colors.bodyBgDark : colors.bodyBg,
     '--custom-radius': theme.borderRadius
       ? radiusMap[theme.borderRadius]
       : '0.375rem',

@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function FooterSection({ section }: { section: Footer }) {
   const { columns = [], copyrightText, socialLinks = [] } = section;
   return (
-    <footer className="bg-neutral-dark text-neutral-light py-2">
+    <footer className="bg-neutral-light dark:bg-neutral-light/10 text-neutral-light py-2">
       <div className="container px-4 mx-auto">
         <div className="py-10">
           {columns.map((column: FooterColumn, index) => (
@@ -17,7 +17,7 @@ export default function FooterSection({ section }: { section: Footer }) {
               <ul className="flex items-center justify-around gap-4">
                 {column.links?.map((link: FooterLink, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link href={link.url || '#'} className="hover:text-accent-2">
+                    <Link href={link.url || '#'} className="text-primary-dark dark:text-primary-light hover:text-accent-1">
                       {link.text}
                     </Link>
                   </li>
@@ -27,7 +27,7 @@ export default function FooterSection({ section }: { section: Footer }) {
           ))}
         </div>
 
-        <div className="flex  gap-4 md:gap-1 justify-center sm:justify-between flex-col md:flex-row  items-center text-sm border-t border-accent-2 py-10">
+        <div className="flex  gap-4 md:gap-1 justify-center text-primary dark:text-primary-light sm:justify-between flex-col md:flex-row  items-center text-sm border-t border-accent-2 py-10">
           <p>{copyrightText}</p>
           <div className="flex space-x-4">
             {socialLinks.map((social, index) => (
@@ -36,7 +36,7 @@ export default function FooterSection({ section }: { section: Footer }) {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-neutral-light hover:text-accent-2"
+                className="flex items-center gap-2 hover:text-accent-2"
               >
                 {social.icon && (
                   <Image

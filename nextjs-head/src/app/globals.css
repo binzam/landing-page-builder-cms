@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-primary: var(--primary-color);
+  --color-primary-light: var(--primary-color-light);
+  --color-primary-dark: var(--primary-color-dark);
   --color-secondary: var(--secondary-color);
+  --color-secondary-light: var(--secondary-color-light);
+  --color-secondary-dark: var(--secondary-color-dark);
   --color-accent-1: var(--accent-color-1);
   --color-accent-2: var(--accent-color-2);
   --color-neutral-light: var(--neutral-color-light);
   --color-neutral-dark: var(--neutral-color-dark);
-  --color-section-bg: var(--section-bg);
-  --color-feature-bg: var(--feature-bg);
   --color-body-bg: var(--body-bg);
-  --color-tcard-bg: var(--testimonial-card-bg);
   --radius-custom-radius: var(--custom-radius);
   --custom-spacing: var(--custom-spacing);
 }

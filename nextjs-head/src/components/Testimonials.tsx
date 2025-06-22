@@ -10,12 +10,12 @@ export default function TestimonialsSection({
 }) {
   const { heading, subheading, layout, testimonials = [] } = section;
   return (
-    <section className="py-20 bg-section-bg">
+    <section className="py-20 ">
       <div className="container px-2 sm:px-4 mx-auto">
-        <h2 className="text-4xl text-shadow-xs text-shadow-neutral-dark font-extrabold text-center mb-4 text-primary">
+        <h2 className="text-4xl text-shadow-xs text-shadow-neutral-dark dark:text-shadow-neutral-light/20 font-extrabold text-center mb-4 text-primary dark:text-primary-light">
           {heading}
         </h2>
-        <p className="text-xl font-semibold text-center text-accent-2 mb-12">
+        <p className="text-xl font-semibold text-center text-secondary dark:text-secondary-light/70 mb-12">
           {subheading}
         </p>
 
@@ -33,7 +33,7 @@ export default function TestimonialsSection({
             <div
               key={index}
               className={cn(
-                'bg-tcard-bg p-3 sm:p-6 rounded-lg shadow-sm shadow-accent-2/60 flex-shrink-0 snap-start',
+                'dark:bg-neutral-light/10 p-3 sm:p-6 rounded-lg shadow-sm shadow-accent-2/60 flex-shrink-0 snap-start',
                 layout === 'carousel' && 'w-100',
                 layout === 'stacked' && 'w-full max-w-3xl mx-auto text-center'
               )}
@@ -56,7 +56,7 @@ export default function TestimonialsSection({
                   <h4 className="font-bold text-left text-sm sm:text-base text-primary">
                     {testimonial.author?.name}
                   </h4>
-                  <p className="text-base/4 sm:text-lg/5 font-semibold text-accent-2">
+                  <p className="text-base/4 sm:text-lg/5 font-semibold text-primary-dark dark:text-primary-light">
                     {testimonial.author?.role}
                     {testimonial.author?.company && (
                       <strong> @{testimonial.author.company}</strong>
@@ -65,8 +65,8 @@ export default function TestimonialsSection({
                 </div>
               </div>
               <blockquote>
-                <p className="text-primary  font-semibold text-lg/6 sm:text-xl/6 before:content-['“'] after:content-['”']">
-                  <i className="text-secondary mx-1">{testimonial.quote}</i>
+                <p className="text-primary dark:text-primary-light font-semibold text-base/6 sm:text-lg/6 before:content-['“'] after:content-['”']">
+                  <i className="text-secondary dark:text-secondary-light mx-1">{testimonial.quote}</i>
                 </p>
               </blockquote>
               {typeof testimonial.rating === 'number' && (
