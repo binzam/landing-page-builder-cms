@@ -25,6 +25,22 @@ export const heroType = defineType({
       type: 'image',
       title: 'Background Image',
     }),
+    defineField({
+      name: 'layout',
+      type: 'string',
+      title: 'Layout',
+      options: {
+        list: [
+          {title: 'Image Left', value: 'imageLeft'},
+          {title: 'Image Right', value: 'imageRight'},
+          {title: 'Full Image Background', value: 'imageFullBackground'},
+          {title: 'Text Only', value: 'textOnly'},
+          {title: 'Centered Content', value: 'centered'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'imageRight',
+    }),
   ],
   preview: {
     select: {

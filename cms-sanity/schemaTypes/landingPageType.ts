@@ -30,6 +30,7 @@ export const landingPageType = defineType({
       title: 'Page Sections',
       type: 'array',
       of: [
+        {type: 'header'},
         {type: 'hero'},
         {type: 'features'},
         {type: 'testimonial'},

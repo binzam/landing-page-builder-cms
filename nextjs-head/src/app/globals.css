@@ -18,7 +18,9 @@
   --radius-custom-radius: var(--custom-radius);
   --custom-spacing: var(--custom-spacing);
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Poppins', sans-serif;
   font-optical-sizing: auto;

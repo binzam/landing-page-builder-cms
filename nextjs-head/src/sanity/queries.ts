@@ -32,11 +32,27 @@ export const LANDING_PAGE_QUERY =
   sections[]{
     _type,
     _key,
+    _type == "header" => {
+      logoImage,
+      logoText,
+      navLinks[] {
+        title,
+        href
+      },
+      ctaButton {
+        text,
+        link
+      },
+      topbarText,
+      isSticky,
+      layout
+    },
     _type == "hero" => {
       heading,
       subtitle,
       primaryButton,
-      backgroundImage
+      backgroundImage,
+      layout
     },
     _type == "features" => {
       heading,

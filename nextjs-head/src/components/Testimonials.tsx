@@ -10,7 +10,7 @@ export default function TestimonialsSection({
 }) {
   const { heading, subheading, layout, testimonials = [] } = section;
   return (
-    <section className="py-20 ">
+    <section id='testimonials' className="py-20 mb-10">
       <div className="container px-2 sm:px-4 mx-auto">
         <h2 className="text-4xl text-shadow-xs text-shadow-neutral-dark dark:text-shadow-neutral-light/20 font-extrabold text-center mb-4 text-primary dark:text-primary-light">
           {heading}
@@ -66,7 +66,7 @@ export default function TestimonialsSection({
               </div>
               <blockquote>
                 <p className="text-primary dark:text-primary-light font-semibold text-base/6 sm:text-lg/6 before:content-['“'] after:content-['”']">
-                  <i className="text-secondary dark:text-secondary-light mx-1">{testimonial.quote}</i>
+                  <span className="text-secondary dark:text-secondary-light tracking-wide mx-1">{testimonial.quote}</span>
                 </p>
               </blockquote>
               {typeof testimonial.rating === 'number' && (

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import HeroSection from '@/components/Hero';
+import HeroSection from '@/components/Hero/Hero';
 import FeaturesSection from '@/components/Features';
 import TestimonialsSection from '@/components/Testimonials';
 import CTASection from '@/components/Cta';
@@ -10,6 +10,7 @@ import { LANDING_PAGE_QUERY } from '@/sanity/queries';
 import { cn, resolveTheme } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/live';
 import type { LandingPage } from '@/sanity/types';
+import Header from '@/components/Header/Header';
 
 export default async function LandingPage({
   params,
@@ -31,13 +32,13 @@ export default async function LandingPage({
     <div
       style={style}
       className={cn(
-        'min-h-screen flex flex-col gap-10 relative bg-neutral-light',
+        'min-h-screen flex flex-col  relative bg-neutral-light',
         className
       )}
     >
       <Link
         href="/"
-        className="absolute top-5 left-5 text-sm font-semibold text-neutral-light bg-secondary rounded-custom-radius gap-2 flex items-center px-4 py-2 hover:bg-secondary/80 z-1000"
+        className="absolute top-0 left-0 text-xs font-semibold text-neutral-light bg-secondary rounded-custom-radius gap-1 flex items-center px-2 py-1 hover:bg-secondary/80 z-1000"
       >
         <svg
           width="18"
@@ -55,10 +56,12 @@ export default async function LandingPage({
             strokeWidth={1.5}
           ></path>
         </svg>
-        All Landing Pages
+        Back
       </Link>
       {landingPage.sections?.map((section) => {
         switch (section._type) {
+          case 'header':
+            return <Header key={section._key} section={section} />;
           case 'hero':
             return <HeroSection key={section._key} section={section} />;
           case 'features':

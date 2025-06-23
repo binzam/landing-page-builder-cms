@@ -3,10 +3,11 @@ import {ctaType} from './ctaType'
 import {faqItemType, faqType} from './faqType'
 import {featureItemType, featuresType} from './featuresType'
 import {footerColumnType, footerType, linkType, socialLinkType} from './footerType'
-import { heroType } from './heroType'
+import {headerType} from './headerType'
+import {heroType} from './heroType'
 import {landingPageType} from './landingPageType'
 import {testimonialItemType, testimonialType} from './testimonialType'
-import { themeType } from './themeType'
+import {themeType} from './themeType'
 
 export const schemaTypes = [
   themeType,
@@ -24,4 +25,5 @@ export const schemaTypes = [
   footerColumnType,
   socialLinkType,
   linkType,
+  headerType,
 ]

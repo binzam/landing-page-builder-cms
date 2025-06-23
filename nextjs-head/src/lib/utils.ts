@@ -3,7 +3,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { fontClassMap } from './fonts';
 import { Theme } from '@/sanity/types';
-import { colorSystem3d } from './theme';
+import { colorSystem2c } from './theme';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,9 +19,9 @@ export function resolveTheme(theme: Theme): {
   const fontClass = fontClassMap[font] || fontClassMap['poppins'];
   const primary = theme.primaryColor?.value || '#6366f1';
   const colors = (
-    colorSystem3d as Record<
+    colorSystem2c as Record<
       string,
-      (typeof colorSystem3d)[keyof typeof colorSystem3d]
+      (typeof colorSystem2c)[keyof typeof colorSystem2c]
     >
   )[primary];
 
