@@ -9,7 +9,7 @@ import FooterSection from '@/components/Footer';
 import { LANDING_PAGE_QUERY } from '@/sanity/queries';
 import { cn, resolveTheme } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/live';
-import type { LandingPage } from '@/sanity/types';
+import type { LandingPage as LandingPageType, Theme } from '@/sanity/types';
 import Header from '@/components/Header/Header';
 
 export default async function LandingPage({
@@ -17,7 +17,7 @@ export default async function LandingPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { data: landingPage }: { data: LandingPage } = await sanityFetch({
+  const { data: landingPage }: { data: LandingPageType } = await sanityFetch({
     query: LANDING_PAGE_QUERY,
     params: await params,
   });
@@ -25,7 +25,8 @@ export default async function LandingPage({
   if (!landingPage) {
     return notFound();
   }
-  const { style, className } = resolveTheme(landingPage.theme!);
+  const theme = landingPage.theme || {};
+  const { style, className } = resolveTheme(theme);
   // console.log('style>', style);
   // console.log('className>', className);
   return (

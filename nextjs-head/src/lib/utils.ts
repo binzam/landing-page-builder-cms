@@ -3,7 +3,6 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { fontClassMap } from './fonts';
 import { Theme } from '@/sanity/types';
-import { colorSystem2c } from './theme';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,12 +17,7 @@ export function resolveTheme(theme: Theme): {
   const font = theme.font ?? 'poppins';
   const fontClass = fontClassMap[font] || fontClassMap['poppins'];
   const primary = theme.primaryColor?.value || '#6366f1';
-  const colors = (
-    colorSystem2c as Record<
-      string,
-      (typeof colorSystem2c)[keyof typeof colorSystem2c]
-    >
-  )[primary];
+
 
   const spacingMap: Record<string, string> = {
     compact: '0.5rem',
@@ -41,16 +35,16 @@ export function resolveTheme(theme: Theme): {
 
   const style = {
     '--primary-color': primary,
-    '--primary-color-light': colors.primaryLight,
-    '--primary-color-dark': colors.primaryDark,
-    '--secondary-color': colors.secondary,
-    '--secondary-color-light': colors.secondaryLight,
-    '--secondary-color-dark': colors.secondaryDark,
-    '--accent-color-1': colors.accent1,
-    '--accent-color-2': colors.accent2,
-    '--neutral-color-light': colors.lightNeutral,
-    '--neutral-color-dark': colors.darkNeutral,
-    '--body-bg': isDark ? colors.bodyBgDark : colors.bodyBg,
+    '--primary-color-dark': theme.colorPalette.palette?.primaryDark,
+    '--primary-color-light': theme.colorPalette?.palette?.primaryLight,
+    '--secondary-color': theme.colorPalette?.palette?.secondary,
+    '--secondary-color-light': theme.colorPalette?.palette?.secondaryLight,
+    '--secondary-color-dark': theme.colorPalette?.palette?.secondaryDark,
+    '--accent-color-1': theme.colorPalette?.palette?.accent1,
+    '--accent-color-2': theme.colorPalette?.palette?.accent2,
+    '--neutral-color-light': theme.colorPalette?.palette?.lightNeutral,
+    '--neutral-color-dark': theme.colorPalette?.palette?.darkNeutral,
+    '--body-bg': isDark ? theme.colorPalette?.palette?.bodyBgDark : theme.colorPalette?.palette?.bodyBg,
     '--custom-radius': theme.borderRadius
       ? radiusMap[theme.borderRadius]
       : '0.375rem',

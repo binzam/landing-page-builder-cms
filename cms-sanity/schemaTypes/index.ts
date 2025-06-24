@@ -1,3 +1,4 @@
+import { colorPaletteType } from './colorPaletteType'
 import {ctaButtonType} from './ctaButtonType'
 import {ctaType} from './ctaType'
 import {faqItemType, faqType} from './faqType'
@@ -26,4 +27,5 @@ export const schemaTypes = [
   socialLinkType,
   linkType,
   headerType,
+  colorPaletteType,
 ]

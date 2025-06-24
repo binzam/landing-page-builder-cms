@@ -11,7 +11,7 @@ export default function HeaderWrapper({
   return (
     <header
       className={cn(
-        'w-full z-50 bg-neutral-light/95 dark:bg-neutral-dark/95 transition-shadow',
+        'w-full z-150 bg-neutral-light/95 dark:bg-neutral-dark/95 transition-shadow',
         isSticky && 'fixed top-0 shadow-sm shadow-accent-1 '
       )}
     >

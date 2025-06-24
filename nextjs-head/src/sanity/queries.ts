@@ -28,7 +28,33 @@ export const LANDING_PAGE_QUERY =
   defineQuery(`*[_type == "landingPage" && slug.current == $slug][0]{
   _id,
   title,
-   theme,
+   theme{
+      mode,
+      primaryColor,
+      font,
+      borderRadius,
+      buttonStyle,
+      spacing,
+      colorPalette->{
+        _id,
+        title,
+        label,
+        primary,
+        palette{
+          primaryLight,
+          primaryDark,
+          secondary,
+          secondaryLight,
+          secondaryDark,
+          accent1,
+          accent2,
+          lightNeutral,
+          darkNeutral,
+          bodyBg,
+          bodyBgDark
+        }
+      }
+    },
   sections[]{
     _type,
     _key,

@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export const landingPageType = defineType({
   name: 'landingPage',
-  title: 'Landing Page',
+  title: 'Landing Pages',
   type: 'document',
   fields: [
     defineField({

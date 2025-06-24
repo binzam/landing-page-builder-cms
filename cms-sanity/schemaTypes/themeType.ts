@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import ThemeInput from '../components/ThemeInput'
 
 export const themeType = defineType({
   name: 'theme',
   title: 'Theme',
   type: 'object',
+  components: {input: ThemeInput},
   fields: [
     defineField({
       name: 'mode',
@@ -38,6 +40,13 @@ export const themeType = defineType({
           {label: 'Zinc', value: '#71717a'},
         ],
       },
+    }),
+    defineField({
+      name: 'colorPalette',
+      title: 'Color Palette',
+      type: 'reference',
+      to: [{type: 'colorPalette'}],
+      readOnly: true,
     }),
     defineField({
       name: 'font',
