@@ -3,6 +3,7 @@ import CenteredHeader from './layouts/CenteredHeader';
 import DefaultHeader from './layouts/DefaultHeader';
 import MinimalHeader from './layouts/MinimalHeader';
 import TopbarHeader from './layouts/TopbarHeader';
+import SplitHeader from './layouts/SplitHeader';
 
 export default function Header({ section }: { section: HeaderType }) {
   // console.log('header', section);
@@ -13,6 +14,8 @@ export default function Header({ section }: { section: HeaderType }) {
       return <MinimalHeader section={section} />;
     case 'topbar':
       return <TopbarHeader section={section} />;
+    case 'split':
+      return <SplitHeader section={section} />;
     case 'default':
     default:
       return <DefaultHeader section={section} />;

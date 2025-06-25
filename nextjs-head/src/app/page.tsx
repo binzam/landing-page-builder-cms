@@ -25,13 +25,16 @@ export default async function IndexPage() {
                   {page.title}
                 </h2>
                 <div className="space-y-2">
-                  {page.sections?.slice(0, 2).map((section) => (
+                  {page.sections?.slice(0, 5).map((section) => (
                     <div key={section._key} className="text-lg text-[#945d44]">
                       {section._type === 'hero' && (
                         <p>Hero: {section.heading}</p>
                       )}
                       {section._type === 'features' && (
-                        <p>Features: {section.items?.length} items</p>
+                        <p>Features: {section.items?.length} features</p>
+                      )}
+                      {section._type === 'testimonial' && (
+                        <p>Testimonials: {section.testimonials?.length} testimonials</p>
                       )}
                     </div>
                   ))}

@@ -6,17 +6,19 @@ import Image from 'next/image';
 type Props = {
   section: Hero;
   imagePosition: 'left' | 'right';
+  isHeaderSticky: boolean;
 };
 
 export default function ImageTextRow({
   section,
   imagePosition = 'right',
+  isHeaderSticky = false,
 }: Props) {
   const { backgroundImage, heading, subtitle, primaryButton } = section;
 
   return (
     <section
-      className={`h-screen max-h-[660px] px-4 py-10 ${imagePosition === 'left' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-neutral-dark/0 via-neutral-dark/5 to-neutral-dark/10 dark:from-neutral-light/0 dark:via-neutral-light/5 dark:to-neutral-light/10 `}
+      className={`${isHeaderSticky ? 'h-[calc(100vh-70px)]' : 'h-screen'} max-h-[660px] px-4 py-10 ${imagePosition === 'left' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-neutral-dark/0 via-neutral-dark/5 to-neutral-dark/10 dark:from-neutral-light/0 dark:via-neutral-light/5 dark:to-neutral-light/10 `}
     >
       <div
         className={`w-full max-w-[1500px] h-full flex items-center justify-between mx-auto ${imagePosition === 'left' ? 'flex-row-reverse' : 'flex-row'}`}
@@ -44,7 +46,7 @@ export default function ImageTextRow({
           </div>
         </div>
         {backgroundImage && (
-          <div className="relative flex-1 max-w-2/5 h-full rounded-2xl shadow shadow-primary  ">
+          <div className="relative flex-1 max-w-2/5 h-full rounded-2xl   ">
             <Image
               src={urlForImage(backgroundImage)
                 .auto('format')
@@ -52,7 +54,7 @@ export default function ImageTextRow({
                 .url()}
               alt="Background"
               fill
-              className={`object-cover z-0 rounded-2xl ${imagePosition === 'left' ? 'border-r-4 border-r-primary dark:border-r-primary-dark' : 'border-l-4 border-l-primary dark:border-l-primary-dark'} `}
+              className={`object-cover z-0 rounded-2xl ${imagePosition === 'left' ? 'border-r-4 border-r-accent-1 dark:border-r-accent-1' : 'border-l-4 border-l-accent-1 dark:border-l-accent-1'} `}
               priority
             />
             <div className="absolute inset-0 dark:bg-gradient-to-t from-neutral-dark/40  rounded-2xl via-[#333333]/50 to-[#222]/70 z-10 " />

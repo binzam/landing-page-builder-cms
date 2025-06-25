@@ -21,6 +21,14 @@ export const themeType = defineType({
       initialValue: 'light',
     }),
     defineField({
+      name: 'colorPalette',
+      title: 'Color Palette',
+      description: 'These are the colors that will be used.',
+      type: 'reference',
+      to: [{type: 'colorPalette'}],
+      readOnly: true,
+    }),
+    defineField({
       name: 'primaryColor',
       description:
         'Choose a primary color. A matching secondary color will be applied automatically.',
@@ -41,13 +49,7 @@ export const themeType = defineType({
         ],
       },
     }),
-    defineField({
-      name: 'colorPalette',
-      title: 'Color Palette',
-      type: 'reference',
-      to: [{type: 'colorPalette'}],
-      readOnly: true,
-    }),
+
     defineField({
       name: 'font',
       title: 'Font Family',

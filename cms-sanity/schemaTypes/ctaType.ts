@@ -26,5 +26,11 @@ export const ctaType = defineType({
       title: 'heading',
       subtitle: 'subheading',
     },
+    prepare({title, subtitle}) {
+      return {
+        title: `CTA section: ${title || 'Untitled'}`,
+        subtitle,
+      }
+    },
   },
 })

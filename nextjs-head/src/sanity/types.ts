@@ -35,7 +35,7 @@ export type Header = {
     _key: string;
   }>;
   ctaButton?: CtaButton;
-  layout?: "default" | "centered" | "minimal" | "topbar";
+  layout?: "default" | "centered" | "minimal" | "topbar" | "split";
   topbarText?: string;
   isSticky?: boolean;
 };
@@ -64,20 +64,12 @@ export type SocialLink = {
   };
 };
 
-export type FooterColumn = {
-  _type: "footerColumn";
-  heading?: string;
-  links?: Array<{
-    _key: string;
-  } & Link>;
-};
-
 export type Footer = {
   _type: "footer";
   copyrightText?: string;
-  columns?: Array<{
+  pageLinks?: Array<{
     _key: string;
-  } & FooterColumn>;
+  } & Link>;
   socialLinks?: Array<{
     _key: string;
   } & SocialLink>;
@@ -223,13 +215,13 @@ export type LandingPage = {
 export type Theme = {
   _type: "theme";
   mode?: "light" | "dark";
-  primaryColor?: SimplerColor;
   colorPalette?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "colorPalette";
   };
+  primaryColor?: SimplerColor;
   font?: "poppins" | "roboto" | "spaceGrotesk";
   borderRadius?: "none" | "sm" | "md" | "lg" | "full";
   buttonStyle?: "solid" | "outline" | "ghost";
@@ -396,7 +388,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Header | Link | SocialLink | FooterColumn | Footer | FaqItem | Faq | TestimonialItem | Testimonial | Cta | FeatureItem | Features | Hero | CtaButton | LandingPage | Theme | ColorPalette | HighlightColor | TextColor | SimplerColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Header | Link | SocialLink | Footer | FaqItem | Faq | TestimonialItem | Testimonial | Cta | FeatureItem | Features | Hero | CtaButton | LandingPage | Theme | ColorPalette | HighlightColor | TextColor | SimplerColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../nextjs-head/src/sanity/queries.ts
 // Variable: LANDING_PAGES_QUERY
@@ -463,7 +455,7 @@ export type LANDING_PAGES_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: LANDING_PAGE_QUERY
-// Query: *[_type == "landingPage" && slug.current == $slug][0]{  _id,  title,   theme{      mode,      primaryColor,      font,      borderRadius,      buttonStyle,      spacing,      colorPalette->{        _id,        title,        label,        primary,        palette{          primaryLight,          primaryDark,          secondary,          secondaryLight,          secondaryDark,          accent1,          accent2,          lightNeutral,          darkNeutral,          bodyBg,          bodyBgDark        }      }    },  sections[]{    _type,    _key,    _type == "header" => {      logoImage,      logoText,      navLinks[] {        title,        href      },      ctaButton {        text,        link      },      topbarText,      isSticky,      layout    },    _type == "hero" => {      heading,      subtitle,      primaryButton,      backgroundImage,      layout    },    _type == "features" => {      heading,      items[]{        title,        description,        icon      }    },    _type == "testimonial" => {      heading,      subheading,      layout,      testimonials[]{        quote,        rating,        author {          name,          role,          company,          image        }      }    },    _type == "cta" => {      heading,      subheading,      button    },    _type == "faq" => {      heading,      questions[]{        question,        answer      }    },    _type == "footer" => {      copyrightText,      columns[]{        heading,        links[]{          text,          url        }      },      socialLinks[]{        platform,        url,        icon      }    }  }}
+// Query: *[_type == "landingPage" && slug.current == $slug][0]{  _id,  title,   theme{      mode,      primaryColor,      font,      borderRadius,      buttonStyle,      spacing,      colorPalette->{        _id,        title,        label,        primary,        palette{          primaryLight,          primaryDark,          secondary,          secondaryLight,          secondaryDark,          accent1,          accent2,          lightNeutral,          darkNeutral,          bodyBg,          bodyBgDark        }      }    },  sections[]{    _type,    _key,    _type == "header" => {      logoImage,      logoText,      navLinks[] {        title,        href      },      ctaButton {        text,        link      },      topbarText,      isSticky,      layout    },    _type == "hero" => {      heading,      subtitle,      primaryButton,      backgroundImage,      layout    },    _type == "features" => {      heading,      items[]{        title,        description,        icon      }    },    _type == "testimonial" => {      heading,      subheading,      layout,      testimonials[]{        quote,        rating,        author {          name,          role,          company,          image        }      }    },    _type == "cta" => {      heading,      subheading,      button    },    _type == "faq" => {      heading,      questions[]{        question,        answer      }    },   _type == "footer" => {  copyrightText,  pageLinks[]{    text,    url  },  socialLinks[]{    platform,    url,    icon  },  legalLinks[]{    text,    url  }}  }}
 export type LANDING_PAGE_QUERYResult = {
   _id: string;
   title: string | null;
@@ -532,12 +524,9 @@ export type LANDING_PAGE_QUERYResult = {
     _type: "footer";
     _key: string;
     copyrightText: string | null;
-    columns: Array<{
-      heading: string | null;
-      links: Array<{
-        text: string | null;
-        url: string | null;
-      }> | null;
+    pageLinks: Array<{
+      text: string | null;
+      url: string | null;
     }> | null;
     socialLinks: Array<{
       platform: "facebook" | "instagram" | "linkedin" | "twitter" | "youtube" | null;
@@ -554,6 +543,10 @@ export type LANDING_PAGE_QUERYResult = {
         crop?: SanityImageCrop;
         _type: "image";
       } | null;
+    }> | null;
+    legalLinks: Array<{
+      text: string | null;
+      url: string | null;
     }> | null;
   } | {
     _type: "header";
@@ -581,7 +574,7 @@ export type LANDING_PAGE_QUERYResult = {
     } | null;
     topbarText: string | null;
     isSticky: boolean | null;
-    layout: "centered" | "default" | "minimal" | "topbar" | null;
+    layout: "centered" | "default" | "minimal" | "topbar" | "split" | null;
   } | {
     _type: "hero";
     _key: string;
@@ -632,10 +625,10 @@ export type LANDING_PAGE_QUERYResult = {
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    "*[_type == \"landingPage\" && defined(slug.current)]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  sections[]{\n    _type,\n    _key,\n    heading,\n    subtitle,\n    items[]{\n      title,\n      description\n    },\n    testimonials[]{\n      quote,\n      author->{\n        name,\n        role\n      }\n    }\n  }\n}": LANDING_PAGES_QUERYResult;
-    "*[_type == \"landingPage\" && slug.current == $slug][0]{\n  _id,\n  title,\n   theme{\n      mode,\n      primaryColor,\n      font,\n      borderRadius,\n      buttonStyle,\n      spacing,\n      colorPalette->{\n        _id,\n        title,\n        label,\n        primary,\n        palette{\n          primaryLight,\n          primaryDark,\n          secondary,\n          secondaryLight,\n          secondaryDark,\n          accent1,\n          accent2,\n          lightNeutral,\n          darkNeutral,\n          bodyBg,\n          bodyBgDark\n        }\n      }\n    },\n  sections[]{\n    _type,\n    _key,\n    _type == \"header\" => {\n      logoImage,\n      logoText,\n      navLinks[] {\n        title,\n        href\n      },\n      ctaButton {\n        text,\n        link\n      },\n      topbarText,\n      isSticky,\n      layout\n    },\n    _type == \"hero\" => {\n      heading,\n      subtitle,\n      primaryButton,\n      backgroundImage,\n      layout\n    },\n    _type == \"features\" => {\n      heading,\n      items[]{\n        title,\n        description,\n        icon\n      }\n    },\n    _type == \"testimonial\" => {\n      heading,\n      subheading,\n      layout,\n      testimonials[]{\n        quote,\n        rating,\n        author {\n          name,\n          role,\n          company,\n          image\n        }\n      }\n    },\n    _type == \"cta\" => {\n      heading,\n      subheading,\n      button\n    },\n    _type == \"faq\" => {\n      heading,\n      questions[]{\n        question,\n        answer\n      }\n    },\n    _type == \"footer\" => {\n      copyrightText,\n      columns[]{\n        heading,\n        links[]{\n          text,\n          url\n        }\n      },\n      socialLinks[]{\n        platform,\n        url,\n        icon\n      }\n    }\n  }\n}": LANDING_PAGE_QUERYResult;
-  }
-}
+// import "@sanity/client";
+// declare module "@sanity/client" {
+//   interface SanityQueries {
+//     "*[_type == \"landingPage\" && defined(slug.current)]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  sections[]{\n    _type,\n    _key,\n    heading,\n    subtitle,\n    items[]{\n      title,\n      description\n    },\n    testimonials[]{\n      quote,\n      author->{\n        name,\n        role\n      }\n    }\n  }\n}": LANDING_PAGES_QUERYResult;
+//     "*[_type == \"landingPage\" && slug.current == $slug][0]{\n  _id,\n  title,\n   theme{\n      mode,\n      primaryColor,\n      font,\n      borderRadius,\n      buttonStyle,\n      spacing,\n      colorPalette->{\n        _id,\n        title,\n        label,\n        primary,\n        palette{\n          primaryLight,\n          primaryDark,\n          secondary,\n          secondaryLight,\n          secondaryDark,\n          accent1,\n          accent2,\n          lightNeutral,\n          darkNeutral,\n          bodyBg,\n          bodyBgDark\n        }\n      }\n    },\n  sections[]{\n    _type,\n    _key,\n    _type == \"header\" => {\n      logoImage,\n      logoText,\n      navLinks[] {\n        title,\n        href\n      },\n      ctaButton {\n        text,\n        link\n      },\n      topbarText,\n      isSticky,\n      layout\n    },\n    _type == \"hero\" => {\n      heading,\n      subtitle,\n      primaryButton,\n      backgroundImage,\n      layout\n    },\n    _type == \"features\" => {\n      heading,\n      items[]{\n        title,\n        description,\n        icon\n      }\n    },\n    _type == \"testimonial\" => {\n      heading,\n      subheading,\n      layout,\n      testimonials[]{\n        quote,\n        rating,\n        author {\n          name,\n          role,\n          company,\n          image\n        }\n      }\n    },\n    _type == \"cta\" => {\n      heading,\n      subheading,\n      button\n    },\n    _type == \"faq\" => {\n      heading,\n      questions[]{\n        question,\n        answer\n      }\n    },\n   _type == \"footer\" => {\n  copyrightText,\n  pageLinks[]{\n    text,\n    url\n  },\n  socialLinks[]{\n    platform,\n    url,\n    icon\n  },\n  legalLinks[]{\n    text,\n    url\n  }\n}\n  }\n}": LANDING_PAGE_QUERYResult;
+//   }
+// }

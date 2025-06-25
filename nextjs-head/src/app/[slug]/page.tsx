@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import HeroSection from '@/components/Hero/Hero';
-import FeaturesSection from '@/components/Features';
+import FeaturesSection from '@/components/Features/Features';
 import TestimonialsSection from '@/components/Testimonials';
 import CTASection from '@/components/Cta';
 import FAQSection from '@/components/Faq';
@@ -9,8 +9,8 @@ import FooterSection from '@/components/Footer';
 import { LANDING_PAGE_QUERY } from '@/sanity/queries';
 import { cn, resolveTheme } from '@/lib/utils';
 import { sanityFetch } from '@/sanity/live';
-import type { LandingPage as LandingPageType, Theme } from '@/sanity/types';
 import Header from '@/components/Header/Header';
+import { LandingPageType } from '@/sanity/types-custom';
 
 export default async function LandingPage({
   params,
@@ -25,15 +25,25 @@ export default async function LandingPage({
   if (!landingPage) {
     return notFound();
   }
-  const theme = landingPage.theme || {};
+  const theme = landingPage.theme;
+
   const { style, className } = resolveTheme(theme);
   // console.log('style>', style);
   // console.log('className>', className);
+  const headerSection = landingPage.sections?.find(
+    (section) => section._type === 'header'
+  );
+  const isSticky =
+    headerSection && 'isSticky' in headerSection
+      ? headerSection.isSticky
+      : false;
+
   return (
     <div
       style={style}
       className={cn(
-        'min-h-screen flex flex-col  relative bg-neutral-light',
+        'min-h-screen flex flex-col  relative bg-neutral-light ',
+        isSticky && 'pt-[70px]',
         className
       )}
     >
@@ -64,7 +74,13 @@ export default async function LandingPage({
           case 'header':
             return <Header key={section._key} section={section} />;
           case 'hero':
-            return <HeroSection key={section._key} section={section} />;
+            return (
+              <HeroSection
+                isHeaderSticky={isSticky || false}
+                key={section._key}
+                section={section}
+              />
+            );
           case 'features':
             return <FeaturesSection key={section._key} section={section} />;
           case 'testimonial':

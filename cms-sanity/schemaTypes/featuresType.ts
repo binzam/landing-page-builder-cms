@@ -17,6 +17,19 @@ export const featuresType = defineType({
       of: [{type: 'featureItem'}],
     }),
   ],
+  preview: {
+    select: {
+      title: 'heading',
+      count: 'items',
+    },
+    prepare({title, count}) {
+      const countLength = count.length
+      return {
+        title: `Features Section: ${title || 'Untitled'}`,
+        subtitle: `${countLength} Feature${countLength !== 1 ? 's' : ''}`,
+      }
+    },
+  },
 })
 
 export const featureItemType = defineType({
@@ -46,6 +59,12 @@ export const featureItemType = defineType({
     select: {
       title: 'title',
       media: 'icon',
+    },
+    prepare({title, media}) {
+      return {
+        title: `Feature: ${title || 'Untitled'}`,
+        media,
+      }
     },
   },
 })

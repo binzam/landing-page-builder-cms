@@ -33,7 +33,7 @@ export const faqType = defineType({
     prepare({title, count}) {
       const countLength = count.length
       return {
-        title: title || 'FAQ Section',
+        title: `FAQ section: ${title || 'FAQ Section'}`,
         subtitle: `${countLength || 0} question${countLength !== 1 ? 's' : ''}`,
       }
     },

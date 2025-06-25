@@ -115,20 +115,21 @@ export const LANDING_PAGE_QUERY =
         answer
       }
     },
-    _type == "footer" => {
-      copyrightText,
-      columns[]{
-        heading,
-        links[]{
-          text,
-          url
-        }
-      },
-      socialLinks[]{
-        platform,
-        url,
-        icon
-      }
-    }
+   _type == "footer" => {
+  copyrightText,
+  pageLinks[]{
+    text,
+    url
+  },
+  socialLinks[]{
+    platform,
+    url,
+    icon
+  },
+  legalLinks[]{
+    text,
+    url
+  }
+}
   }
 }`);

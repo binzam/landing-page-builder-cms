@@ -48,7 +48,7 @@ export const testimonialType = defineType({
     prepare({title, count, layout}) {
       const countLength = count.length
       return {
-        title: title,
+        title: `Testimonial Section: ${title || 'Untitled'}`,
         subtitle: `${countLength} testimonial${countLength !== 1 ? 's' : ''} (${layout})`,
       }
     },
@@ -115,7 +115,7 @@ export const testimonialItemType = defineType({
     },
     prepare({title, role, media, quote}) {
       return {
-        title: title || 'Anonymous',
+        title: `Testimony by: ${title || 'Anonymous'}`,
         subtitle: role || '',
         media,
         description: quote ? quote.slice(0, 50) + (quote.length > 50 ? '...' : '') : '',

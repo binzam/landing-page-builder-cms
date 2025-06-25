@@ -1,9 +1,9 @@
-import { colorPaletteType } from './colorPaletteType'
+import {colorPaletteType} from './colorPaletteType'
 import {ctaButtonType} from './ctaButtonType'
 import {ctaType} from './ctaType'
 import {faqItemType, faqType} from './faqType'
 import {featureItemType, featuresType} from './featuresType'
-import {footerColumnType, footerType, linkType, socialLinkType} from './footerType'
+import {footerType, linkType, socialLinkType} from './footerType'
 import {headerType} from './headerType'
 import {heroType} from './heroType'
 import {landingPageType} from './landingPageType'
@@ -23,7 +23,6 @@ export const schemaTypes = [
   faqType,
   faqItemType,
   footerType,
-  footerColumnType,
   socialLinkType,
   linkType,
   headerType,

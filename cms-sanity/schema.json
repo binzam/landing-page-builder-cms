@@ -334,51 +334,6 @@
     }
   },
   {
-    "name": "footerColumn",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "footerColumn"
-          }
-        },
-        "heading": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "links": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  }
-                }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "link"
-              }
-            }
-          },
-          "optional": true
-        }
-      }
-    }
-  },
-  {
     "name": "footer",
     "type": "type",
     "value": {
@@ -398,7 +353,7 @@
           },
           "optional": true
         },
-        "columns": {
+        "pageLinks": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
@@ -414,7 +369,7 @@
               },
               "rest": {
                 "type": "inline",
-                "name": "footerColumn"
+                "name": "link"
               }
             }
           },
@@ -1345,14 +1300,6 @@
           },
           "optional": true
         },
-        "primaryColor": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "simplerColor"
-          },
-          "optional": true
-        },
         "colorPalette": {
           "type": "objectAttribute",
           "value": {
@@ -1380,6 +1327,14 @@
               }
             },
             "dereferencesTo": "colorPalette"
+          },
+          "optional": true
+        },
+        "primaryColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "simplerColor"
           },
           "optional": true
         },

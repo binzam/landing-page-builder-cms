@@ -47,5 +47,11 @@ export const heroType = defineType({
       title: 'heading',
       media: 'backgroundImage',
     },
+    prepare({title, media}) {
+      return {
+        title: `Hero: ${title || 'Untitled'}`,
+        media,
+      }
+    },
   },
 })

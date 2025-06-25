@@ -45,6 +45,7 @@ export const headerType = defineType({
       options: {
         list: [
           {title: 'Default (Logo Left + Nav + CTA)', value: 'default'},
+          {title: 'Split (Logo Left  (Nav + CTA) Right)', value: 'split'},
           {title: 'Centered Logo', value: 'centered'},
           {title: 'Minimal (Logo Only)', value: 'minimal'},
           {title: 'With Top Bar', value: 'topbar'},

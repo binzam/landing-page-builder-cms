@@ -12,11 +12,10 @@ export const footerType = defineType({
       initialValue: '© 2025 Company Name. All rights reserved.',
     }),
     defineField({
-      name: 'columns',
+      name: 'pageLinks',
       type: 'array',
-      title: 'Footer Columns',
-      of: [{type: 'footerColumn'}],
-      validation: (Rule) => Rule.max(4),
+      title: 'Page Links',
+      of: [{type: 'link'}],
     }),
     defineField({
       name: 'socialLinks',
@@ -33,53 +32,18 @@ export const footerType = defineType({
   ],
   preview: {
     select: {
-      columns: 'columns',
+      pageLinks: 'pageLinks',
       socials: 'socialLinks',
+      legalLinks: 'legalLinks',
     },
-    prepare({columns, socials}) {
-      const columnLength = columns.length
-      const socialsLength = socials.length
+    prepare({pageLinks, socials, legalLinks}) {
       return {
         title: 'Footer',
-        subtitle: `${columnLength || 0} columns • ${socialsLength || 0} social links`,
+        subtitle: `${pageLinks?.length || 0} page links • ${socials?.length || 0} social links • ${legalLinks?.length || 0} legal links`,
       }
     },
   },
 })
-
-export const footerColumnType = defineType({
-  name: 'footerColumn',
-  title: 'Footer Column',
-  type: 'object',
-  fields: [
-    defineField({
-      name: 'heading',
-      type: 'string',
-      title: 'Column Heading',
-    }),
-    defineField({
-      name: 'links',
-      type: 'array',
-      title: 'Links',
-      of: [{type: 'link'}],
-      validation: (Rule) => Rule.min(1),
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'heading',
-      count: 'links',
-    },
-    prepare({title, count}) {
-      const countLength = count.length
-      return {
-        title: title || 'Untitled column',
-        subtitle: `${countLength || 0} link${countLength !== 1 ? 's' : ''}`,
-      }
-    },
-  },
-})
-
 export const socialLinkType = defineType({
   name: 'socialLink',
   title: 'Social Link',
@@ -148,4 +112,3 @@ export const linkType = defineType({
     },
   },
 })
-// link url in the footer should be '/'
