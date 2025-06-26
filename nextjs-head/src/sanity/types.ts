@@ -35,7 +35,8 @@ export type Header = {
     _key: string;
   }>;
   ctaButton?: CtaButton;
-  layout?: "default" | "centered" | "minimal" | "topbar" | "split";
+  layout?: "default" | "split" | "centered" | "minimal";
+  showTopbar?: boolean;
   topbarText?: string;
   isSticky?: boolean;
 };
@@ -574,7 +575,7 @@ export type LANDING_PAGE_QUERYResult = {
     } | null;
     topbarText: string | null;
     isSticky: boolean | null;
-    layout: "centered" | "default" | "minimal" | "topbar" | "split" | null;
+    layout: "centered" | "default" | "minimal" | "split" | null;
   } | {
     _type: "hero";
     _key: string;
@@ -627,7 +628,7 @@ export type LANDING_PAGE_QUERYResult = {
 // Query TypeMap
 // import "@sanity/client";
 // declare module "@sanity/client" {
-//   interface SanityQueries {
+//    interface SanityQueries {
 //     "*[_type == \"landingPage\" && defined(slug.current)]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  sections[]{\n    _type,\n    _key,\n    heading,\n    subtitle,\n    items[]{\n      title,\n      description\n    },\n    testimonials[]{\n      quote,\n      author->{\n        name,\n        role\n      }\n    }\n  }\n}": LANDING_PAGES_QUERYResult;
 //     "*[_type == \"landingPage\" && slug.current == $slug][0]{\n  _id,\n  title,\n   theme{\n      mode,\n      primaryColor,\n      font,\n      borderRadius,\n      buttonStyle,\n      spacing,\n      colorPalette->{\n        _id,\n        title,\n        label,\n        primary,\n        palette{\n          primaryLight,\n          primaryDark,\n          secondary,\n          secondaryLight,\n          secondaryDark,\n          accent1,\n          accent2,\n          lightNeutral,\n          darkNeutral,\n          bodyBg,\n          bodyBgDark\n        }\n      }\n    },\n  sections[]{\n    _type,\n    _key,\n    _type == \"header\" => {\n      logoImage,\n      logoText,\n      navLinks[] {\n        title,\n        href\n      },\n      ctaButton {\n        text,\n        link\n      },\n      topbarText,\n      isSticky,\n      layout\n    },\n    _type == \"hero\" => {\n      heading,\n      subtitle,\n      primaryButton,\n      backgroundImage,\n      layout\n    },\n    _type == \"features\" => {\n      heading,\n      items[]{\n        title,\n        description,\n        icon\n      }\n    },\n    _type == \"testimonial\" => {\n      heading,\n      subheading,\n      layout,\n      testimonials[]{\n        quote,\n        rating,\n        author {\n          name,\n          role,\n          company,\n          image\n        }\n      }\n    },\n    _type == \"cta\" => {\n      heading,\n      subheading,\n      button\n    },\n    _type == \"faq\" => {\n      heading,\n      questions[]{\n        question,\n        answer\n      }\n    },\n   _type == \"footer\" => {\n  copyrightText,\n  pageLinks[]{\n    text,\n    url\n  },\n  socialLinks[]{\n    platform,\n    url,\n    icon\n  },\n  legalLinks[]{\n    text,\n    url\n  }\n}\n  }\n}": LANDING_PAGE_QUERYResult;
 //   }

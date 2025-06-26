@@ -1,14 +1,26 @@
-import Image from 'next/image';
-import { Header } from '@/sanity/types';
 import { Button } from '@/components/ui/Button';
 import { urlForImage } from '@/sanity/client';
+import { Header } from '@/sanity/types';
+import Image from 'next/image';
 import MobileNav from '../MobileNav';
 
-export default function DefaultHeader({ section }: { section: Header }) {
+export default function CenteredLogoHeader({ section }: { section: Header }) {
   const { logoImage, logoText, navLinks, ctaButton } = section;
 
   return (
-    <div className="max-w-[1500px] mx-auto flex items-center justify-between px-4 h-[70px]">
+    <div className="max-w-[1500px] mx-auto flex items-center justify-between gap-2   px-4 py-4 h-[70px]">
+      <div className="hidden md:block">
+        {ctaButton && (
+          <Button
+            asChild
+            variant="default"
+            size="lg"
+            className="rounded-custom-radius tracking-wide font-bold text-neutral-light bg-primary dark:bg-primary-dark shadow shadow-neutral-dark dark:shadow-neutral-light "
+          >
+            <a href={ctaButton.link}>{ctaButton.text}</a>
+          </Button>
+        )}
+      </div>
       <div className="flex items-center gap-2">
         {logoImage && (
           <Image
@@ -19,8 +31,9 @@ export default function DefaultHeader({ section }: { section: Header }) {
             className="object-contain"
           />
         )}
-        {logoText && <span className="text-xl sm:text-2xl font-bold">{logoText}</span>}
+        {logoText && <h1 className="text-xl sm:text-2xl font-bold">{logoText}</h1>}
       </div>
+
       <nav className="hidden md:flex items-center gap-8">
         {navLinks?.map(
           (link) =>
@@ -35,18 +48,6 @@ export default function DefaultHeader({ section }: { section: Header }) {
             )
         )}
       </nav>
-      <div className="hidden md:block">
-        {ctaButton && (
-          <Button
-            asChild
-            variant="default"
-            size="lg"
-            className="rounded-custom-radius tracking-wide font-bold text-neutral-light bg-primary dark:bg-primary-dark shadow shadow-neutral-dark dark:shadow-neutral-light "
-          >
-            <a href={ctaButton.link}>{ctaButton.text}</a>
-          </Button>
-        )}
-      </div>
       <MobileNav navLinks={navLinks} ctaButton={ctaButton} />
     </div>
   );

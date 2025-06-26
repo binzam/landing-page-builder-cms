@@ -151,17 +151,24 @@
               },
               {
                 "type": "string",
+                "value": "split"
+              },
+              {
+                "type": "string",
                 "value": "centered"
               },
               {
                 "type": "string",
                 "value": "minimal"
-              },
-              {
-                "type": "string",
-                "value": "topbar"
               }
             ]
+          },
+          "optional": true
+        },
+        "showTopbar": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
           },
           "optional": true
         },

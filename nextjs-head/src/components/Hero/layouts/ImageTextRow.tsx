@@ -6,19 +6,17 @@ import Image from 'next/image';
 type Props = {
   section: Hero;
   imagePosition: 'left' | 'right';
-  isHeaderSticky: boolean;
 };
 
 export default function ImageTextRow({
   section,
   imagePosition = 'right',
-  isHeaderSticky = false,
 }: Props) {
   const { backgroundImage, heading, subtitle, primaryButton } = section;
 
   return (
     <section
-      className={`${isHeaderSticky ? 'h-[calc(100vh-70px)]' : 'h-screen'} max-h-[660px] px-4 py-10 ${imagePosition === 'left' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-neutral-dark/0 via-neutral-dark/5 to-neutral-dark/10 dark:from-neutral-light/0 dark:via-neutral-light/5 dark:to-neutral-light/10 `}
+      className={` custom-height max-h-[660px] px-4 py-10 ${imagePosition === 'left' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-neutral-dark/0 via-neutral-dark/5 to-neutral-dark/10 dark:from-neutral-light/0 dark:via-neutral-light/5 dark:to-neutral-light/10 `}
     >
       <div
         className={`w-full max-w-[1500px] h-full flex items-center justify-between mx-auto ${imagePosition === 'left' ? 'flex-row-reverse' : 'flex-row'}`}

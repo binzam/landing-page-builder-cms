@@ -27,6 +27,7 @@ export const themeType = defineType({
       type: 'reference',
       to: [{type: 'colorPalette'}],
       readOnly: true,
+      hidden: true,
     }),
     defineField({
       name: 'primaryColor',

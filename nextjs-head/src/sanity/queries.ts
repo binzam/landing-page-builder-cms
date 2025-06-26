@@ -69,6 +69,7 @@ export const LANDING_PAGE_QUERY =
         text,
         link
       },
+      showTopbar,
       topbarText,
       isSticky,
       layout

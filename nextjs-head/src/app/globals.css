@@ -17,6 +17,7 @@
   --color-body-bg: var(--body-bg);
   --radius-custom-radius: var(--custom-radius);
   --custom-spacing: var(--custom-spacing);
+  --custom-height: var(--custom-height);
 }
 html {
   scroll-behavior: smooth;
@@ -29,4 +30,8 @@ body {
 
 .custom-spacing {
   gap: var(--custom-spacing);
+}
+
+.custom-height {
+  height: var(--custom-height);
 }

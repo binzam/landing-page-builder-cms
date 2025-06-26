@@ -45,19 +45,25 @@ export const headerType = defineType({
       options: {
         list: [
           {title: 'Default (Logo Left + Nav + CTA)', value: 'default'},
-          {title: 'Split (Logo Left  (Nav + CTA) Right)', value: 'split'},
+          {title: 'Split (Logo Left + Nav + CTA Right)', value: 'split'},
           {title: 'Centered Logo', value: 'centered'},
-          {title: 'Minimal (Logo Only)', value: 'minimal'},
-          {title: 'With Top Bar', value: 'topbar'},
         ],
         layout: 'radio',
       },
+    }),
+    defineField({
+      name: 'showTopbar',
+      title: 'Show Top Bar',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Enable a top bar above the main header (e.g., for announcements or promos)',
     }),
     defineField({
       name: 'topbarText',
       title: 'Top Bar Text',
       type: 'string',
       description: 'Optional announcement or promotional text shown above the main header',
+      hidden: ({parent}) => !parent?.showTopbar,
     }),
     defineField({
       name: 'isSticky',

@@ -57,16 +57,18 @@ export default function FooterSection({ section }: { section: Footer }) {
         </div>
         <div className="w-full max-w-3xl mx-auto text-lg text-center">
           <ul className="flex items-center justify-around gap-4">
-            {legalLinks.map((link, index) => (
-              <li key={link._key || index}>
-                <Link
-                  href={link.url || '#'}
-                  className="text-primary-dark dark:text-primary-light hover:text-accent-1"
-                >
-                  {link.text}
-                </Link>
-              </li>
-            ))}
+            {legalLinks &&
+              legalLinks.length > 0 &&
+              legalLinks.map((link, index) => (
+                <li key={link._key || index}>
+                  <Link
+                    href={link.url || '#'}
+                    className="text-primary-dark dark:text-primary-light hover:text-accent-1"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

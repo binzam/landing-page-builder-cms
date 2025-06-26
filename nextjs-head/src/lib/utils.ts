@@ -8,7 +8,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function resolveTheme(theme: ThemeLocal): {
+export function resolveTheme(
+  theme: ThemeLocal,
+  isSticky: boolean,
+  showTopbar: boolean
+): {
   className: string;
   style: React.CSSProperties;
 } {
@@ -37,7 +41,8 @@ export function resolveTheme(theme: ThemeLocal): {
     lg: '0.5rem',
     full: '9999px',
   };
-
+  const heroHeight = showTopbar ? 100 : 70;
+  const customHeight = `calc(100vh-${heroHeight})`;
   const style = {
     '--primary-color': primaryColor?.value || '#6366f1',
     '--primary-color-dark': palette.primaryDark,
@@ -52,6 +57,7 @@ export function resolveTheme(theme: ThemeLocal): {
     '--body-bg': isDark ? palette.bodyBgDark : palette.bodyBg,
     '--custom-radius': radiusMap[borderRadius],
     '--custom-spacing': spacingMap[spacing],
+    '--custom-height': customHeight,
   } as React.CSSProperties;
 
   const modeClass = isDark
@@ -59,7 +65,8 @@ export function resolveTheme(theme: ThemeLocal): {
     : 'bg-body-bg text-neutral-dark';
 
   const className = cn(
-    modeClass,
+    `${modeClass} ${isSticky && showTopbar && 'pt-[100px]'}
+    ${isSticky && !showTopbar && 'pt-[70px]'} `,
     fontClassMap[font] || fontClassMap['poppins']
   );
 

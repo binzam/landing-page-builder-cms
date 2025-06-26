@@ -27,23 +27,22 @@ export default async function LandingPage({
   }
   const theme = landingPage.theme;
 
-  const { style, className } = resolveTheme(theme);
-  // console.log('style>', style);
-  // console.log('className>', className);
   const headerSection = landingPage.sections?.find(
     (section) => section._type === 'header'
   );
-  const isSticky =
-    headerSection && 'isSticky' in headerSection
-      ? headerSection.isSticky
-      : false;
+  const { style, className } = resolveTheme(
+    theme,
+    headerSection?.isSticky as boolean,
+    headerSection?.showTopbar as boolean
+  );
+  // console.log('style>', style);
+  // console.log('className>', className);
 
   return (
     <div
       style={style}
       className={cn(
         'min-h-screen flex flex-col  relative bg-neutral-light ',
-        isSticky && 'pt-[70px]',
         className
       )}
     >
@@ -76,7 +75,6 @@ export default async function LandingPage({
           case 'hero':
             return (
               <HeroSection
-                isHeaderSticky={isSticky || false}
                 key={section._key}
                 section={section}
               />
