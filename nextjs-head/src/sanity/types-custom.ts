@@ -1,33 +1,46 @@
-import { Cta, Faq, Features, Footer, Header, Hero, SimplerColor, Slug, Testimonial } from "./types";
+import {
+  Cta,
+  Faq,
+  Features,
+  Footer,
+  Header,
+  Hero,
+  SimplerColor,
+  Slug,
+  Testimonial,
+} from './types';
 
 export type LandingPageType = {
   _id: string;
-  _type: "landingPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
   title?: string;
   slug?: Slug;
   theme: ThemeLocal;
-  sections?: Array<{
-    _key: string;
-  } & Header | {
-    _key: string;
-  } & Hero | {
-    _key: string;
-  } & Features | {
-    _key: string;
-  } & Testimonial | {
-    _key: string;
-  } & Cta | {
-    _key: string;
-  } & Faq  | {
-    _key: string;
-  } & Footer>;
+  sections?: Array<
+    | ({
+        _key: string;
+      } & Header)
+    | ({
+        _key: string;
+      } & Hero)
+    | ({
+        _key: string;
+      } & Features)
+    | ({
+        _key: string;
+      } & Testimonial)
+    | ({
+        _key: string;
+      } & Cta)
+    | ({
+        _key: string;
+      } & Faq)
+    | ({
+        _key: string;
+      } & Footer)
+  >;
 };
 
 export type ThemeLocal = {
-  _type: 'theme';
   mode?: 'light' | 'dark';
   colorPalette: ColorPalette;
   primaryColor?: SimplerColor;

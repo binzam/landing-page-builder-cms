@@ -22,14 +22,14 @@ export default function SplitHeader({ section }: { section: Header }) {
         {logoText && <span className="text-xl sm:text-2xl font-bold">{logoText}</span>}
       </div>
       <div className="hidden md:flex items-center justify-end gap-10">
-        <nav className="flex items-center gap-8">
+        <nav className="flex items-center gap-10">
           {navLinks?.map(
             (link) =>
               link.href && (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-base font-semibold tracking-wide text-neutral-dark dark:text-neutral-light hover:text-primary dark:hover:text-primary-light"
+                  className="text-base sm:text-lg font-semibold tracking-wide text-neutral-dark dark:text-neutral-light hover:text-primary dark:hover:text-primary-light"
                 >
                   {link.title}
                 </a>

@@ -12,6 +12,9 @@ export const client = createClient({
   stega: {
     studioUrl: process.env.SANITY_STUDIO_URL,
   },
+  requestTagPrefix: 'nextjs.', 
+  timeout: 10000, 
+  perspective: 'published',
 });
 
 const builder = imageUrlBuilder(client);

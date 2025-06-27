@@ -42,7 +42,7 @@ export function resolveTheme(
     full: '9999px',
   };
   const heroHeight = showTopbar ? 100 : 70;
-  const customHeight = `calc(100vh-${heroHeight})`;
+  const customHeight = `calc(100vh - ${heroHeight}px)`;
   const style = {
     '--primary-color': primaryColor?.value || '#6366f1',
     '--primary-color-dark': palette.primaryDark,

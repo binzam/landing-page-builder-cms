@@ -14,7 +14,7 @@ export default function Centered({ section, textOnly = false }: Props) {
   // console.log('isticky?', isHeaderSticky);
   return (
     <section
-      className={`relative  h-[--custom-height]  max-h-[660px] px-4 py-10 ${textOnly && 'bg-gradient-to-bl from-accent-1/20  via-neutral-light/20 to-accent-1/10  dark:bg-gradient-to-bl dark:from-accent-1/10 dark:via-neutral-dark/5 dark:to-accent-1/5'} `}
+      className={`relative  custom-height max-h-[660px] px-4 py-10 ${textOnly && 'bg-gradient-to-bl from-accent-1/20  via-neutral-light/20 to-accent-1/10  dark:bg-gradient-to-bl dark:from-accent-1/10 dark:via-neutral-dark/5 dark:to-accent-1/5'} `}
     >
       {!textOnly && backgroundImage && (
         <>

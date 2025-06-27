@@ -11,7 +11,9 @@ type Props = {
 
 export default function MobileNav({ navLinks, ctaButton }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="md:hidden relative flex-1 h-full flex items-center justify-end ">
       <button
@@ -60,7 +62,8 @@ export default function MobileNav({ navLinks, ctaButton }: Props) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="p-2 rounded-xs shadow-xs hover:shadow-none dark:shadow-accent-1 bg-accent-1/50 text-base text-neutral-dark dark:text-neutral-light font-medium hover:text-primary dark:hover:text-primary-light transition"
+                  onClick={closeMenu}
+                  className="p-2 rounded-xs shadow-xs shadow-accent-1 hover:shadow-none dark:shadow-accent-1 bg-accent-1/10 hover:bg-accent-1/5 text-base text-neutral-dark dark:text-neutral-light font-semibold  dark:hover:text-primary-light transition"
                 >
                   {link.title}
                 </a>
@@ -68,6 +71,7 @@ export default function MobileNav({ navLinks, ctaButton }: Props) {
             )}
             {ctaButton && (
               <Button
+                onClick={closeMenu}
                 asChild
                 variant="default"
                 size="lg"
